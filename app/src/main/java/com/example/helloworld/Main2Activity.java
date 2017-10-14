@@ -37,8 +37,7 @@ public class Main2Activity extends AppCompatActivity {
                 //不带数据
                 /*Intent intent = new Intent(Main2Activity.this,MainActivity.class);
                 startActivity(intent);*/
-                Intent intent = new Intent(Main2Activity.this,MainActivity.class);
-                startActivityForResult(intent,1);
+
                 break;
             case R.id.remove_item:
                 Toast.makeText(Main2Activity.this, "点到我removeMenu了",
