@@ -1,14 +1,18 @@
 package com.example.helloworld;
 
+
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
+import android.view.View.OnClickListener;
 
-public class Main2Activity extends AppCompatActivity {
+public class Main2Activity extends AppCompatActivity implements OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +24,15 @@ public class Main2Activity extends AppCompatActivity {
 
         Toast.makeText(Main2Activity.this, activity_1_data,
                 Toast.LENGTH_SHORT).show();
+
+
+        Button button_1 = (Button) findViewById(R.id.button_1);
+        Button button_2 = (Button) findViewById(R.id.button_2);
+        Button button_3 = (Button) findViewById(R.id.button_3);
+
+        button_1.setOnClickListener(this);
+        button_2.setOnClickListener(this);
+        button_3.setOnClickListener(this);
     }
 
     @Override
@@ -43,7 +56,8 @@ public class Main2Activity extends AppCompatActivity {
                 Toast.makeText(Main2Activity.this, "点到我removeMenu了",
                         Toast.LENGTH_SHORT).show();
                 Intent intent1 = new Intent(Intent.ACTION_VIEW);
-                intent1.setData(Uri.parse("http://www.baidu.com"));
+                intent1.setAction(Intent.ACTION_CALL);
+                intent1.setData(Uri.parse("tel:10086"));
                 startActivity(intent1);
                 //不带数据 直接销毁
                 //finish();
@@ -53,5 +67,30 @@ public class Main2Activity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    @Override
+    public void onClick(View v) {
+      switch (v.getId()){
+          case R.id.button_1 :
+              Toast.makeText(Main2Activity.this, "1"+R.id.button_1,
+                      Toast.LENGTH_SHORT).show();
+              break;
+          case R.id.button_2 :
+              Toast.makeText(Main2Activity.this, "2",
+                      Toast.LENGTH_SHORT).show();
+              break;
+          case R.id.button_3 :
+              Toast.makeText(Main2Activity.this, "3",
+                      Toast.LENGTH_SHORT).show();
+              break;
+      }
+
+    }
+
+
+    public void button3(View v){
+        Toast.makeText(Main2Activity.this, "5",
+                Toast.LENGTH_SHORT).show();
     }
 }

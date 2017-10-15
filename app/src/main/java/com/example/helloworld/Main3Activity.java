@@ -18,10 +18,19 @@ public class Main3Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.putExtra("activity_return_3","我是activity3回來的數據");
-                setResult(RESULT_OK,intent);
+                intent.putExtra("activity_return_3", "我是activity3回來的數據");
+                setResult(RESULT_OK, intent);
                 finish();
             }
         });
+    }
+
+   //按back键
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.putExtra("activity_return_3", "我是activity3回來的數據");
+        setResult(RESULT_OK, intent);
+        finish();
     }
 }
