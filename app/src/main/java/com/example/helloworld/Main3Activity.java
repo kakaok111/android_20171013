@@ -1,5 +1,6 @@
 package com.example.helloworld;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,6 +24,12 @@ public class Main3Activity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    //供其他activity启动 这个activity 并传参
+    public static void actionStart(Context context){
+        Intent intent = new Intent(context,Main3Activity.class);
+        intent.putExtra("activity_return_3", "我是activity3回來的數據");
+        context.startActivity(intent);
     }
 
    //按back键

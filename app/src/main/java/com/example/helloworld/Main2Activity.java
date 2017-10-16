@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,10 +15,19 @@ import android.view.View.OnClickListener;
 
 public class Main2Activity extends AppCompatActivity implements OnClickListener {
 
+
+    private static final String TAG = "Main2Activity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+        if ( savedInstanceState != null ){
+            //当这个活动被销毁时 再次创建这个活动拿到这个活动的数据
+            String data = savedInstanceState.getString("xx");
+            Log.d(TAG, "onCreate: "+data);
+        }
 
         Intent intent = getIntent();
         String activity_1_data = intent.getStringExtra("activity_1_data");
@@ -33,6 +43,13 @@ public class Main2Activity extends AppCompatActivity implements OnClickListener 
         button_1.setOnClickListener(this);
         button_2.setOnClickListener(this);
         button_3.setOnClickListener(this);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        String data  = "我是这个activity的数据，当目前这个消失时，我就会在被创建时拿到";
+        outState.putString("xx",data);
     }
 
     @Override
